@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Button restartButton;
     public GameObject titleScreen;
     public bool isGameActive;
+    public AudioSource music;
     // public GameObject[] targets2;
 
     public float timeLeft;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
         isGameActive = false;
+        music.Stop();
     }
 
     public void RestartGame(){
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         spawnRate /= difficulty;
         timeLeft = 60.0f;
+        music.Play();
 
         StartCoroutine(SpawnTarget());
         UpdateScore(0);
